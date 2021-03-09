@@ -3,20 +3,20 @@ package com.example.stockclient;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
-import reactor.util.retry.Retry;
 
 import java.io.IOException;
-import java.time.Duration;
 
 @Log4j2
-public class WebClientStockClient {
+public class WebClientStockClient implements StockClient {
     private WebClient webClient;
 
     public WebClientStockClient(WebClient webClient) {
         this.webClient = webClient;
     }
 
+    @Override
     public Flux<StockPrice> pricesFor(String symbol) {
+        log.info("WebClient stock client");
         return webClient.get()
                 .uri("http://localhost:8080/stocks/{symbol}", symbol)
                 .retrieve()

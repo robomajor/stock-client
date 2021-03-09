@@ -1,7 +1,7 @@
 package com.example.stockui;
 
+import com.example.stockclient.StockClient;
 import com.example.stockclient.StockPrice;
-import com.example.stockclient.WebClientStockClient;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,10 +20,10 @@ public class ChartController {
 
     @FXML
     public LineChart<String, Double> chart;
-    private final WebClientStockClient webClientStockClient;
+    private final StockClient webClientStockClient;
 
-    public ChartController(WebClientStockClient webClientStockClient) {
-        this.webClientStockClient = webClientStockClient;
+    public ChartController(StockClient stockClient) {
+        this.webClientStockClient = stockClient;
     }
 
     @FXML
